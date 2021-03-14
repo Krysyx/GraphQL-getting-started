@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
 
-router.get("/", (req: any, res: any, next: any) => {
+router.get("/", (req, res, next) => {
   console.log("REQUEST HANDLED");
 });
 

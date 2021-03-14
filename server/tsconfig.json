@@ -16,7 +16,7 @@
     "alwaysStrict": true /* Parse in strict mode and emit "use strict" for each source file. */,
     "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */,
     "skipLibCheck": true /* Skip type checking of declaration files. */,
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
-    // "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    "isolatedModules": true
   }
 }
