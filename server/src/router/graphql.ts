@@ -1,8 +1,8 @@
 import { Router } from "express";
+import { rollDice } from "../controllers/graphql";
+
 const router = Router();
 
-router.get("/", (req, res, next) => {
-  console.log("REQUEST HANDLED");
-});
+router.post("/", rollDice);
 
 export default router;
