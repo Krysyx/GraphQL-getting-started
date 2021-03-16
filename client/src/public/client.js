@@ -13,8 +13,8 @@ const buttonSetup = (nodeElement) => {
     axios
       .post(`http://localhost:7200/graphql`, {
         query:
-          "query RollRandomDices($sides: Int) { getDice(numSides: $sides) { output } }",
-        variables: { sides: 6 },
+          "query RollRandomDices($sides: Int, $rolls: Int!) { getDice(numSides: $sides) { rollOnce roll(numRolls: $rolls) } }",
+        variables: { sides: 6, rolls: 4 },
       })
       .then(({ data }) => console.log("Response from graphQL query : ", data))
       .catch(({ response: { data } }) => console.error(data));

@@ -9,7 +9,7 @@ export default class RandomDice {
   }
 
   rollOnce(): number {
-    return 1 + Math.floor(Math.random() * (this.numSides || 6));
+    return 1 + Math.floor(Math.random() * this.numSides);
   }
 
   roll({ numRolls }: Roll): number[] {
