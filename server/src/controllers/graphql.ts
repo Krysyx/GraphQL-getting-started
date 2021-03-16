@@ -3,10 +3,9 @@ import { graphqlHTTP } from "express-graphql";
 import { buildSchema } from "graphql";
 import { RootValue } from "../models/graphql";
 
-const rollDice: ExpressRequestFnMapper = ({ body }, res, next) => {
-  console.log(body);
+const rollDice: ExpressRequestFnMapper = (req, res, next) => {
   const schema = buildSchema(
-    "type Query {rollDice(numDice: Int!, numSides: Int): [Int]}"
+    "type Query { rollDice(numDice: Int!, numSides: Int): [Int] }"
   );
 
   const rootValue = {
@@ -21,7 +20,7 @@ const rollDice: ExpressRequestFnMapper = ({ body }, res, next) => {
     },
   };
 
-  graphqlHTTP({ schema, rootValue });
+  graphqlHTTP({ schema, rootValue, graphiql: true });
 };
 
 export { rollDice };
