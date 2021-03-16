@@ -9,6 +9,7 @@
     "start": "cross-env nodemon"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.10",
     "cross-env": "^7.0.3",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
