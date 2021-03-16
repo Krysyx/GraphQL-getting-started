@@ -1,5 +1,3 @@
-// import axios from "./utils/axiosInstance";
-
 const init = () => {
   console.log("DOM loaded");
   app.buttonContainer.className = "button-container";
@@ -12,8 +10,9 @@ const buttonSetup = (nodeElement) => {
   nodeElement.textContent = "Try a graphql Query";
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", (event) => {
+    console.log("button clicked");
     axios
-      .post("http://localhost:7200/graphql", {
+      .post(`http://localhost:7200/graphql`, {
         query:
           "query Roll($dice: Int!, $sides: Int) {rollDice(numDice: $dice, numSides: $sides)}",
         variables: { dice: 3, sides: 6 },
