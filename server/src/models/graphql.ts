@@ -1,4 +1,7 @@
 export interface RootValue {
-  numDice: number;
   numSides?: number;
+}
+
+export interface Roll {
+  numRolls: number;
 }

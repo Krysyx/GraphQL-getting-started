@@ -1,23 +1,16 @@
 import { graphqlHTTP } from "express-graphql";
 import { buildSchema } from "graphql";
 import { RootValue } from "../models/graphql";
+import RandomDice from "../classes/RandomDice";
 
 const schema = buildSchema(
-  "type Query { rollDice(numDice: Int!, numSides: Int): [Int] }"
+  "type RandomDice { roll(numRolls: Int!): [Int] } type Query { getDice(numSides: Int!): RandomDice }"
 );
 
-const rootValue = {
-  rollDice: ({ numDice, numSides }: RootValue) => {
-    const output: number[] = [];
-
-    for (let index = 0; index < numDice; index++) {
-      output.push(1 + Math.floor(Math.random() * (numSides || 6)));
-    }
-
-    return output;
-  },
+const resolver = {
+  getDice: ({ numSides }: RootValue) => new RandomDice(numSides || 6),
 };
 
-const rollDice = graphqlHTTP({ schema, rootValue, graphiql: true });
+const rollDice = graphqlHTTP({ schema, rootValue: resolver, graphiql: true });
 
 export { rollDice };
