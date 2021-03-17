@@ -1,15 +1,6 @@
 import { graphqlHTTP } from "express-graphql";
-import { buildSchema } from "graphql";
-import generateId from "crypto-random-string";
-import {
-  GetMessage,
-  Message,
-  MessageInput,
-  RootValue,
-  UpdateMessage,
-} from "../models/graphql";
 import RandomDice from "../classes/RandomDice";
-import FakeDatabase from "../classes/FakeDatabase";
+import { schema, resolver as rootValue } from "../schema/MessageSchema";
 
 // const schema = buildSchema(`
 //   type RandomDice {
@@ -44,35 +35,6 @@ import FakeDatabase from "../classes/FakeDatabase";
 //   getDice: ({ numSides }: RootValue) => new RandomDice(numSides || 6),
 // };
 
-const schema = buildSchema(`
-    type Message {
-      id: ID!
-      content: String
-      author: String
-    }
-
-    input MessageInput {
-      content: String
-      author: String
-    }
-
-    type Query {
-      getMessage(id: ID!): Message
-      createMessage(input: MessageInput): Message
-      updateMessage(id: ID!, input: MessageInput): Message
-    }
-`);
-
-const resolver = {
-  getMessage: ({ id }: GetMessage): Message => FakeDatabase.getMessage(id),
-  createMessage: ({ input }: MessageInput) => {
-    return FakeDatabase.createMessage(generateId({ length: 10 }), input);
-  },
-  updateMessage: ({ id, input }: UpdateMessage) => {
-    return FakeDatabase.updateMessage(id, input);
-  },
-};
-
-const rollDice = graphqlHTTP({ schema, rootValue: resolver, graphiql: true });
+const rollDice = graphqlHTTP({ schema, rootValue, graphiql: true });
 
 export { rollDice };

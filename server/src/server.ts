@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import corsOptions from "./configs/cors";
 import { graphqlRouter } from "./router";
+import Message from "./classes/Message";
 dotenv.config({ path: `${process.env.NODE_ENV}.env` });
 
 const server = express();

@@ -6,15 +6,26 @@ const init = () => {
 };
 
 const buttonSetup = (nodeElement) => {
-  console.log("button setup function running");
   nodeElement.textContent = "Try a graphql Query";
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
     axios
       .post(`http://localhost:7200/graphql`, {
-        query:
-          "query RollRandomDices($sides: Int, $rolls: Int!) { getDice(numSides: $sides) { rollOnce roll(numRolls: $rolls) } }",
-        variables: { sides: 6, rolls: 4 },
+        query: `query CreateMessage($input: MessageInput) {
+            createMessage(input: $input) {
+              id
+              content
+              author
+            }
+
+            createMessage(input: $input2) {
+              content
+            }
+          }`,
+        variables: {
+          input: { author: "Wilfried", content: "My message 1" },
+          input2: { author: "Antho", content: "My message OMEGALUL" },
+        },
       })
       .then(({ data }) => console.log("Response from graphQL query : ", data))
       .catch(({ response: { data } }) => console.error(data));
