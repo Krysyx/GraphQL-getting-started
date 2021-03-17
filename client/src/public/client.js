@@ -10,7 +10,7 @@ const buttonSetup = (nodeElement) => {
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
     axios
-      .post(`http://localhost:7200/graphql`, {
+      .post(`http://localhost:7200/graphql/messages`, {
         query: `query CreateMessage($input: MessageInput) {
             createMessage(input: $input) {
               id

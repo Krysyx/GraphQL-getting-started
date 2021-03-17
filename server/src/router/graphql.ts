@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { rollDice } from "../controllers/graphql";
+import { messages } from "../controllers/messages";
+import { dices } from "../controllers/dices";
 
 const router = Router();
 
-router.post("/", rollDice);
+router.post("/dices", dices);
+router.post("/messages", messages);
 
 export default router;
