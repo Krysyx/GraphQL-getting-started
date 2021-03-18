@@ -23,7 +23,7 @@ const user = new GraphQLObjectType({
 const query = new GraphQLObjectType({
   name: "Query",
   fields: {
-    user: {
+    getUser: {
       type: user,
       args: { id: { type: GraphQLString } },
       resolve: (source: any, { id }: any) => fakeDatabase[id],
