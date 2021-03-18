@@ -10,21 +10,24 @@ const buttonSetup = (nodeElement) => {
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
     axios
-      .post(`http://localhost:7200/graphql/messages`, {
-        query: `query CreateMessage($input: MessageInput) {
-            createMessage(input: $input) {
-              id
-              content
-              author
-            }
+      .post(`http://localhost:7200/graphql/mutation`, {
+        query: `mutation CreateMessage($input: MessageInput, $input2: MessageInput, $id: ID!) {
+          createMessage(input: $input) {
+            id
+            author
+            content
+          }
 
-            createMessage(input: $input2) {
-              content
-            }
-          }`,
+          updateMessage(id: $id, input: $input2) {
+            id
+            author
+            content
+          }
+        }`,
         variables: {
-          input: { author: "Wilfried", content: "My message 1" },
-          input2: { author: "Antho", content: "My message OMEGALUL" },
+          input2: { author: "Antho", content: "My antho message" },
+          input: { author: "Estelle", content: "Lol c quoi ce bordel" },
+          id: "021a9618e4",
         },
       })
       .then(({ data }) => console.log("Response from graphQL query : ", data))

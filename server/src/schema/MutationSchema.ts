@@ -20,8 +20,8 @@ const schema = buildSchema(`
     }
   
     type Mutation {
-        createMessage(input: MessageInput)
-        updateMessage(id: ID!, input: MessageInput)
+        createMessage(input: MessageInput): Message
+        updateMessage(id: ID!, input: MessageInput): Message
     }
 `);
 
