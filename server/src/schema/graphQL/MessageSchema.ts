@@ -1,7 +1,7 @@
 import { buildSchema } from "graphql";
-import Message from "../classes/Message";
-import { GetMessage, MessageInput, UpdateMessage } from "../models/graphql";
-import FakeDatabase from "../classes/FakeDatabase";
+import Message from "../../classes/Message";
+import { GetMessage, MessageInput, UpdateMessage } from "../../models/graphql";
+import FakeDatabase from "../../classes/FakeDatabase";
 
 const schema = buildSchema(`
     input MessageInput {

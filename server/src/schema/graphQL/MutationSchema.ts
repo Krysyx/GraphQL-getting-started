@@ -1,7 +1,7 @@
 import { buildSchema } from "graphql";
-import { GetMessage, MessageInput, UpdateMessage } from "../models/graphql";
+import { GetMessage, MessageInput, UpdateMessage } from "../../models/graphql";
 import generateId from "crypto-random-string";
-import Message from "../classes/Message";
+import Message from "../../classes/Message";
 
 const schema = buildSchema(`
     input MessageInput {

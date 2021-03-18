@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const { connect, connection } = mongoose;
 const MONGO_URL = process.env.MONGO_URL!;
 
 const options = {
@@ -8,6 +9,6 @@ const options = {
   useCreateIndex: true,
 };
 
-mongoose.connect(MONGO_URL, options).catch((error) => console.error(error));
+connect(MONGO_URL, options).catch((error) => console.error(error));
 
-export default mongoose.connection;
+export default connection;

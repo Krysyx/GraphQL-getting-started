@@ -1,6 +1,6 @@
 import { buildSchema } from "graphql";
-import { RootValue } from "../models/graphql";
-import RandomDice from "../classes/RandomDice";
+import { RootValue } from "../../models/graphql";
+import RandomDice from "../../classes/RandomDice";
 
 const schema = buildSchema(`
   type RandomDice {
