@@ -1,5 +1,11 @@
-import { GraphQLInt, GraphQLObjectType, GraphQLSchema, GraphQLString } from "graphql";
 import { Author } from "../mongoose";
+import {
+  GraphQLInt,
+  GraphQLList,
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString,
+} from "graphql";
 
 const type = new GraphQLObjectType({
   name: "Author",
@@ -16,11 +22,32 @@ const type = new GraphQLObjectType({
 const query = new GraphQLObjectType({
   name: "Query",
   fields: {
-    getAuthor: {
-      type,
-      resolve: (source, args) => Author.find(),
+    getAuthors: {
+      type: new GraphQLList(type),
+      resolve: async (source, args) => await Author.find(),
     },
   },
 });
 
 export default new GraphQLSchema({ query });
+
+// import { buildSchema } from "graphql";
+
+// const schema = buildSchema(`
+//     type Author {
+//       _id: String
+//       firstname: String
+//       lastname: String
+//       age: Int
+//     }
+
+//     type Query {
+//       getAuthors: [Author]
+//     }
+// `);
+
+// const resolver = {
+//   getAuthors: async () => await Author.find(),
+// };
+
+// export { schema, resolver };

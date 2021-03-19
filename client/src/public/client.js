@@ -9,18 +9,22 @@ const buttonSetup = (nodeElement) => {
   nodeElement.textContent = "Try a graphql Query";
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
+    const query = `query GetAuthors {
+      getAuthors {
+        firstname
+        lastname
+        age
+      }
+    }`;
+
     axios
-      .post(`http://localhost:7200/graphql/contructingTypes`, {
-        query: `query GetUser($id: String) {
-          getUser(id: $id) {
-            id
-            name
-          }
-        }`,
-        variables: {
-          id: "a",
+      .post(
+        `http://localhost:7200/graphql/mongo/authors`,
+        {
+          query,
         },
-      })
+        { headers: { "Content-Type": "application/json" } }
+      )
       .then(({ data }) => console.log("Response from graphQL query : ", data))
       .catch(({ response: { data } }) => console.error(data));
   });
