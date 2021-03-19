@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config({ path: `${process.env.NODE_ENV}.env` });
 import mongoose from "mongoose";
 const { connect, connection } = mongoose;
 const MONGO_URL = process.env.MONGO_URL!;
