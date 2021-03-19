@@ -1,11 +1,5 @@
 import { Author } from "../mongoose";
-import {
-  GraphQLInt,
-  GraphQLList,
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLString,
-} from "graphql";
+import { GraphQLInt, GraphQLObjectType, GraphQLSchema, GraphQLString } from "graphql";
 
 const type = new GraphQLObjectType({
   name: "Author",

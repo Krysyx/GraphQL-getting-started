@@ -9,8 +9,8 @@ const buttonSetup = (nodeElement) => {
   nodeElement.textContent = "Try a graphql Query";
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
-    const query = `query GetAuthors {
-      getAuthors {
+    const query = `query CreateAuthor($firstname: String, $lastname: String, $age: Int) {
+      createAuthor(firstname: $firstname, lastname: $lastname, age: $age) {
         _id
         firstname
         lastname
@@ -20,9 +20,14 @@ const buttonSetup = (nodeElement) => {
 
     axios
       .post(
-        `http://localhost:7200/graphql/mongo/authors`,
+        `http://localhost:7200/graphql/mongo/authors/create`,
         {
           query,
+          variables: {
+            firstname: "Antho",
+            lastname: "Motto",
+            age: 25,
+          },
         },
         { headers: { "Content-Type": "application/json" } }
       )
