@@ -1,6 +1,7 @@
 import { graphqlHTTP } from "express-graphql";
-import schema from "../schema/graphQL/getAuthorsSchema";
+import { getAuthorsSchema, createAuthorSchema } from "../schema/graphQL";
 
-const getAuthors = graphqlHTTP({ schema, graphiql: true });
+const getAuthors = graphqlHTTP({ schema: getAuthorsSchema, graphiql: true });
+const create = graphqlHTTP({ schema: createAuthorSchema, graphiql: true });
 
-export { getAuthors };
+export { getAuthors, create };

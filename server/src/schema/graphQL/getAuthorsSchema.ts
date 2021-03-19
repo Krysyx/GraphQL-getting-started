@@ -24,7 +24,7 @@ const query = new GraphQLObjectType({
   fields: {
     getAuthors: {
       type: new GraphQLList(type),
-      resolve: async (source, args) => await Author.find(),
+      resolve: () => Author.find().then((authors: any) => authors),
     },
   },
 });

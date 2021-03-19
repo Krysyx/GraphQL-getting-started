@@ -11,6 +11,7 @@ const buttonSetup = (nodeElement) => {
   nodeElement.addEventListener("click", () => {
     const query = `query GetAuthors {
       getAuthors {
+        _id
         firstname
         lastname
         age
