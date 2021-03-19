@@ -1,1 +1,6 @@
-//TODO: mongodb controllers method to fetch and add data using graphql queries/mutations
+import { graphqlHTTP } from "express-graphql";
+import schema from "../schema/graphQL/getAuthorsSchema";
+
+const getAuthors = graphqlHTTP({ schema, graphiql: true });
+
+export { getAuthors };

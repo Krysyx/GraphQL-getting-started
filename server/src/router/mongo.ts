@@ -1,6 +1,7 @@
 import { Router } from "express";
+import { getAuthors } from "../controllers/mongo";
 const router = Router();
 
-//TODO: graphql mongodb data fetching routes
+router.get("/authors", getAuthors);
 
 export default router;
