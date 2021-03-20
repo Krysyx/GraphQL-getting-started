@@ -55,7 +55,7 @@ const mutation = new GraphQLObjectType({
   },
 });
 
-const querySchema = new GraphQLSchema({ query });
-const mutationSchema = new GraphQLSchema({ query: mutation });
+const queryAuthorSchema = new GraphQLSchema({ query });
+const mutationAuthorSchema = new GraphQLSchema({ query: mutation });
 
-export { querySchema, mutationSchema };
+export { queryAuthorSchema, mutationAuthorSchema };

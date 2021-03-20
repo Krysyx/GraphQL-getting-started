@@ -35,6 +35,6 @@ const query = new GraphQLObjectType({
   },
 });
 
-export default new GraphQLSchema({
+export const queryBookSchema = new GraphQLSchema({
   query,
 });

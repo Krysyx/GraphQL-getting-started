@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { query, mutation } from "../controllers/author";
+import { authorQuery, authorMutation } from "../controllers/author";
+import { bookQuery } from "../controllers/books";
 const router = Router();
 
-router.post("/authors/query", query);
-router.post("/authors/mutation", mutation);
-router.post("/books/query");
+router.post("/authors/query", authorQuery);
+router.post("/authors/mutation", authorMutation);
+router.post("/books/query", bookQuery);
 
 export default router;

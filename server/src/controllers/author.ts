@@ -1,7 +1,7 @@
 import { graphqlHTTP } from "express-graphql";
-import { querySchema, mutationSchema } from "../schema/graphQL";
+import { queryAuthorSchema, mutationAuthorSchema } from "../schema/graphQL";
 
-const query = graphqlHTTP({ schema: querySchema, graphiql: true });
-const mutation = graphqlHTTP({ schema: mutationSchema, graphiql: true });
+const authorQuery = graphqlHTTP({ schema: queryAuthorSchema, graphiql: true });
+const authorMutation = graphqlHTTP({ schema: mutationAuthorSchema, graphiql: true });
 
-export { query, mutation };
+export { authorQuery, authorMutation };

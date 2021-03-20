@@ -1,2 +1,3 @@
-import { querySchema, mutationSchema } from "../graphQL/AuthorSchema";
-export { querySchema, mutationSchema };
+import { queryAuthorSchema, mutationAuthorSchema } from "./AuthorSchema";
+import { queryBookSchema } from "./BookSchema";
+export { queryAuthorSchema, mutationAuthorSchema, queryBookSchema };
