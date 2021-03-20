@@ -1,3 +1,5 @@
+import api from "/env/api.js";
+
 const init = () => {
   console.log("DOM loaded");
   app.buttonContainer.className = "button-container";
@@ -27,7 +29,7 @@ const buttonSetup = (nodeElement) => {
 
     axios
       .post(
-        `http://localhost:7200/graphql/mongo/authors/mutation`,
+        `${api}/graphql/mongo/authors/mutation`,
         {
           query,
           variables: {
