@@ -11,8 +11,9 @@ const buttonSetup = (nodeElement) => {
   nodeElement.textContent = "Try a graphql Query";
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
-    const query = `query GetBooks {
-      getBookPages {
+    const query = `mutation UpdateBook($id: String, $title: String) {
+      updateBook(_id: $id, title: $title) {
+        _id
         title
         author
         pages {
@@ -24,9 +25,13 @@ const buttonSetup = (nodeElement) => {
 
     axios
       .post(
-        `${api}/graphql/mongo/books/query`,
+        `${api}/graphql/mongo/books/mutation`,
         {
           query,
+          variables: {
+            id: "605545eec5c82d476cdda94d",
+            title: "Santa Sante",
+          },
         },
         { headers: { "Content-Type": "application/json" } }
       )

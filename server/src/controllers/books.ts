@@ -1,6 +1,7 @@
 import { graphqlHTTP } from "express-graphql";
-import { queryBookSchema } from "../schema/graphQL";
+import { queryBookSchema, mutationBookSchema } from "../schema/graphQL";
 
 const bookQuery = graphqlHTTP({ schema: queryBookSchema, graphiql: true });
+const bookMutation = graphqlHTTP({ schema: mutationBookSchema, graphiql: true });
 
-export { bookQuery };
+export { bookQuery, bookMutation };

@@ -1,3 +1,3 @@
 import { queryAuthorSchema, mutationAuthorSchema } from "./AuthorSchema";
-import { queryBookSchema } from "./BookSchema";
-export { queryAuthorSchema, mutationAuthorSchema, queryBookSchema };
+import { queryBookSchema, mutationBookSchema } from "./BookSchema";
+export { queryAuthorSchema, mutationAuthorSchema, queryBookSchema, mutationBookSchema };

@@ -59,8 +59,8 @@ const mutation = new GraphQLObjectType({
     updateBook: {
       type: bookType,
       args: {
-        _id: { type: GraphQLString! },
-        title: { type: GraphQLString },
+        _id: { type: GraphQLString },
+        title: { type: GraphQLString! },
         author: { type: GraphQLString },
         pages: { type: bookInterface },
       },
