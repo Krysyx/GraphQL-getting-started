@@ -1,9 +1,8 @@
 import { Router } from "express";
-import { getAuthors, create, update } from "../controllers/mongo";
+import { query, mutation } from "../controllers/mongo";
 const router = Router();
 
-router.post("/authors", getAuthors);
-router.post("/authors/create", create);
-router.post("/authors/update", update);
+router.post("/authors/query", query);
+router.post("/authors/mutation", mutation);
 
 export default router;

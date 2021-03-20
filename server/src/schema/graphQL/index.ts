@@ -1,5 +1,2 @@
-import getAuthorsSchema from "./getAuthorsSchema";
-import createAuthorSchema from "./createAuthorSchema";
-import updateAuthorSchema from "./updateAuthorSchema";
-
-export { getAuthorsSchema, createAuthorSchema, updateAuthorSchema };
+import { querySchema, mutationSchema } from "../graphQL/AuthorSchema";
+export { querySchema, mutationSchema };
