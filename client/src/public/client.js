@@ -11,34 +11,22 @@ const buttonSetup = (nodeElement) => {
   nodeElement.textContent = "Try a graphql Query";
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
-    const query = `query CreateAndUpdate($id: String, $firstnameUpdate: String, $age: Int, $firstname: String, $lastname: String) {
-      updateAuthor(id: $id, firstname: $firstnameUpdate) {
-        _id
-        firstname
-        lastname
-        age
-      }
-
-      createAuthor(firstname: $firstname, lastname: $lastname, age: $age) {
-        _id
-        firstname
-        lastname
-        age
+    const query = `query GetBooks {
+      getBookPages {
+        title
+        author
+        pages {
+          marked
+          non_marked
+        }
       }
     }`;
 
     axios
       .post(
-        `${api}/graphql/mongo/authors/mutation`,
+        `${api}/graphql/mongo/books/query`,
         {
           query,
-          variables: {
-            id: "6053f7834511ba3824d99cbd",
-            firstnameUpdate: "Vincent",
-            firstname: "Xqc",
-            lastname: "Felix",
-            age: 25,
-          },
         },
         { headers: { "Content-Type": "application/json" } }
       )
