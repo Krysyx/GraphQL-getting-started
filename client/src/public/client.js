@@ -11,8 +11,8 @@ const buttonSetup = (nodeElement) => {
   nodeElement.textContent = "Try a graphql Query";
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
-    const query = `mutation UpdateBook($id: ID, $title: String) {
-      updateBook(id: $id, title: $title) {
+    const query = `mutation CreateAndUpdateBook($id: ID, $update: String, $title: String, $author: String, $pages: BookInterface ) {
+      updateBook(id: $id, title: $update) {
         _id
         title
         author
@@ -21,16 +21,28 @@ const buttonSetup = (nodeElement) => {
           non_marked
         }
       }
+
+      createBook(title: $title, author: $author, pages: $pages) {
+        _id
+        title
+        author
+      }
     }`;
 
     axios
       .post(
-        `${api}/graphql/mongo/books/mutation`,
+        `${api}/graphql/mongo/books`,
         {
           query,
           variables: {
             id: "605545eec5c82d476cdda94e",
-            title: "UPDATED TITLE",
+            update: "UPDATED TITLE 2",
+            title: "Last created Book",
+            author: "Anthony Motto",
+            pages: {
+              marked: 107,
+              non_marked: 3,
+            },
           },
         },
         { headers: { "Content-Type": "application/json" } }
