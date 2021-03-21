@@ -1,5 +1,6 @@
 import { Author } from "../mongoose";
 import {
+  GraphQLID,
   GraphQLInt,
   GraphQLList,
   GraphQLObjectType,
@@ -11,7 +12,7 @@ const type = new GraphQLObjectType({
   name: "Author",
   fields: {
     _id: {
-      type: GraphQLString,
+      type: GraphQLID,
     },
     firstname: { type: GraphQLString },
     lastname: { type: GraphQLString },

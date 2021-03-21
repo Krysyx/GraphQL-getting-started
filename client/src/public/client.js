@@ -11,8 +11,8 @@ const buttonSetup = (nodeElement) => {
   nodeElement.textContent = "Try a graphql Query";
   nodeElement.className = "query-button";
   nodeElement.addEventListener("click", () => {
-    const query = `mutation UpdateBook($id: String, $title: String) {
-      updateBook(_id: $id, title: $title) {
+    const query = `mutation UpdateBook($id: ID, $title: String) {
+      updateBook(id: $id, title: $title) {
         _id
         title
         author
@@ -29,8 +29,8 @@ const buttonSetup = (nodeElement) => {
         {
           query,
           variables: {
-            id: "605545eec5c82d476cdda94d",
-            title: "Santa Sante",
+            id: "605545eec5c82d476cdda94e",
+            title: "UPDATED TITLE",
           },
         },
         { headers: { "Content-Type": "application/json" } }

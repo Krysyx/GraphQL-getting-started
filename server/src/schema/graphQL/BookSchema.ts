@@ -1,5 +1,6 @@
 import { Book } from "../mongoose";
 import {
+  GraphQLID,
   GraphQLInputObjectType,
   GraphQLInt,
   GraphQLList,
@@ -19,7 +20,7 @@ const bookPages = new GraphQLObjectType({
 const bookType = new GraphQLObjectType({
   name: "Book",
   fields: {
-    _id: { type: GraphQLString },
+    _id: { type: GraphQLID },
     title: { type: GraphQLString },
     author: { type: GraphQLString },
     pages: { type: bookPages },
@@ -59,20 +60,15 @@ const mutation = new GraphQLObjectType({
     updateBook: {
       type: bookType,
       args: {
-        _id: { type: GraphQLString },
-        title: { type: GraphQLString! },
+        id: { type: GraphQLID },
+        title: { type: GraphQLString },
         author: { type: GraphQLString },
         pages: { type: bookInterface },
       },
-      resolve: async (source, { id, ...args }) => await Book.findByIdAndUpdate(id, args),
+      resolve: async (source, { id, ...args }) =>
+        await Book.findByIdAndUpdate(id, args, { new: true }),
     },
   },
 });
 
-const queryBookSchema = new GraphQLSchema({
-  query,
-});
-
-const mutationBookSchema = new GraphQLSchema({ query: mutation });
-
-export { queryBookSchema, mutationBookSchema };
+export default new GraphQLSchema({ query, mutation });
