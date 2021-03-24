@@ -5,7 +5,6 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "tsc": "tsc",
     "start": "cross-env nodemon",
     "seed": "cross-env NODE_ENV=development node --experimental-specifier-resolution=node --loader ts-node/esm src/mongodb_init.ts"
   },
